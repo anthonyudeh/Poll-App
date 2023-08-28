@@ -192,11 +192,7 @@ console.log('jonas'.at(-1));
 
 
 //FOR EACH METHOD ---> LOOPING AN ARRAY 
-const currencies = new Map([
-   ['USD', 'United States dollar'], 
-   ['EUR', 'Euro'], 
-   ['GBP', 'Pound Sterling']
-]); 
+
 
 const movements = [200, 450, -400, 2000, -650, -130, 70, 1300]; 
 //loop through this method using for of
@@ -244,3 +240,81 @@ palmPay.forEach(function(mover, index, array){ //make sure you follow the pather
    }
 })
 //the mover argument is the current element , while the index is the position ---> 
+
+//When do you use forEach and forOf loop  the forEach you can not break and continue from on a forEach loop, except the forOf 
+
+//forEach on Maps and Sets
+//forEach Map
+const currencies = new Map([
+   ['USD', 'United States dollar'], //entries of the array
+   ['EUR', 'Euro'],  //first is the key, the second is the value
+   ['GBP', 'Pound Sterling']
+]); 
+
+
+currencies.forEach(function(mover, index, arr){ //first on is the curent value, second key and last one array that is looped over
+   console.log(`${index}: ${mover}`)
+})
+
+//forEach set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']); 
+// console.log(currenciesUnique.length) 
+currenciesUnique.forEach(function(value, key, map){
+   console.log(`${key}: ${value}`) //a set does not have keys 
+}) 
+
+
+//Bank App 
+//Data from a web APi and things coming from API always comes in an object frmt
+
+const Account1 = {
+   owner: 'Jonas Schmetman', 
+   movements: [200, 450, -400, 3000, -650, -130, 70, 1300], 
+   interestRate: 1.2, 
+   pin:1111
+}
+
+const Account2 = {
+   owner: 'Udeh Anthony', 
+   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30], 
+   interestRate: 1.5, 
+   pin:2222
+}
+
+const Account3 = {
+   owner: 'Ebuka Nwash', 
+   movements: [200, -200, 340, -300, -20, 50, 400, -460], 
+   interestRate: 0.7, 
+   pin:3333
+}
+
+const Account4 = {
+   owner: 'Peter Akhabue Odion', 
+   movements: [430, 1000, 700, 50, 90], 
+   interestRate: 1, 
+   pin:4444
+}
+
+//so we are going to create a function that loops through the account1.movements array 
+
+const displayMovements = function (movements){ //inside here we pass the key as parameter in the displaymovements function
+  movements.forEach(function(mov, i){
+     
+  })
+}
+
+//we call the function
+displayMovements(Account1.movements)
+
+
+const loginBTN = document.querySelector('#btn--2'); 
+const password = document.querySelector('#btn--1'); 
+const displayACCT = document.querySelector('.transaction-container');
+
+loginBTN.addEventListener('click', function(){
+    if(password.value === '1111'){
+         displayACCT.classList.add()
+    }else{
+       console.log('goal')
+    }
+})
