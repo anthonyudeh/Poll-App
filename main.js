@@ -299,7 +299,8 @@ const Account4 = {
 
 const displayMovements = function (movements){ //inside here we pass the key as parameter in the displaymovements function
   movements.forEach(function(mov, i){
-     
+      //create html 
+      
   })
 }
 
@@ -313,7 +314,7 @@ const displayACCT = document.querySelector('.transaction-container');
 
 loginBTN.addEventListener('click', function(){
     if(password.value === '1111'){
-         displayACCT.classList.add()
+         displayACCT.classList.remove('hidden')
     }else{
        console.log('goal')
     }
