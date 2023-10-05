@@ -269,15 +269,18 @@ currenciesUnique.forEach(function (value, key, map) {
 
 const loginBTN = document.querySelector('#btn--2');
 const password = document.querySelector('#btn--1');
+const userName = document.querySelector('#btn--0')
 const displayACCT = document.querySelector('.transaction-container');
 const displayTransaction = document.querySelector('.transaction-list');
+const mainBalance = document.querySelector('.inner-current-bal'); 
+
 
 
 const Account1 = {
    owner: 'Jonas Schmetman',
    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
    interestRate: 1.2,
-   pin: 1111
+   pin: '1111'
 }
 
 const Account2 = {
@@ -291,18 +294,23 @@ const Account3 = {
    owner: 'Ebuka Nwash',
    movements: [200, -200, 340, -300, -20, 50, 400, -460],
    interestRate: 0.7,
-   pin: 3333
+   pin: '3333'
 }
 
 const Account4 = {
    owner: 'Peter Akhabue Odion',
    movements: [430, 1000, 700, 50, 90],
    interestRate: 1,
-   pin: 4444
+   pin: '4444'
 }
 
 const accounts = [Account1, Account2, Account3, Account4]
+const printBalance = function(movements){
+   const balance = movements.reduce((acc, curr) => acc + curr, 0) ; 
+   mainBalance.textContent = `$ ${balance}` 
+}
 
+printBalance(Account4.movements)
 //so we are going to create a function that loops through the account1.movements array 
 
 const displayMovements = function (movements) { //inside here we pass the key as parameter in the displaymovements function
@@ -334,7 +342,9 @@ const displayMovements = function (movements) { //inside here we pass the key as
 }
 
 //we call the function
-displayMovements(Account2.movements)
+displayMovements(Account4.movements)
+
+ 
 //We want to compute a user name 
 const createUserName = function (user) {
    const userInfo = user.toLocaleLowerCase().split(' ').map(function (name) {
@@ -345,15 +355,27 @@ const createUserName = function (user) {
 } 
 console.log(createUserName('Jonas Smithman'));
 
-
+ 
 
 loginBTN.addEventListener('click', function () {
-   if (password.value === '1111') {
+   if (password.value === Account4.pin && userName.value === createUserName('Jonas Smithman')) {
       displayACCT.classList.remove('hidden')
    } else {
-      console.log('goal')
+      console.log('goal') 
    }
-})
+}); 
+
+//Account Balance
+//we want to use the reduce method to work on the account balance
+
+const userBalance = movements.reduce(function(acc, cur, i, arr){
+   //first parameter is accumulator - keeps accumulatings values
+   console.log(`iteration ${i}: ${acc}`)   
+  return acc + cur 
+
+},0) //start counting at 0
+console.log(userBalance)
+
 
 
 
